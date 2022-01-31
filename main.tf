@@ -12,6 +12,12 @@ provider "google" {
   region  = var.region
 }
 
+module "network" {
+  source  = "app.terraform.io/SnoopyToMars/network/google"
+  version = "3.4.0"
+  # insert required variables here
+}
+
 resource "google_compute_network" "hashicat" {
   name                    = "${var.prefix}-vpc-${var.region}"
   auto_create_subnetworks = false
